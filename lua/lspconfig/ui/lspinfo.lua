@@ -120,7 +120,7 @@ return function()
   local buffer_filetype = vim.bo.filetype
 
   local win_info = windows.percentage_range_window(0.8, 0.7)
-  local bufnr, win_id = win_info.bufnr, win_info.win_id
+  local bufnr  = win_info.bufnr
 
   local buf_lines = {}
 
@@ -203,7 +203,6 @@ return function()
   vim.api.nvim_buf_set_option(bufnr, 'filetype', 'lspinfo')
 
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<esc>', '<cmd>bd<CR>', { noremap = true })
-  vim.lsp.util.close_preview_autocmd({ 'BufHidden', 'BufLeave' }, win_id)
 
   vim.fn.matchadd(
     'Error',
